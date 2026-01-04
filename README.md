@@ -118,5 +118,3 @@ The system operates on a sophisticated, multi-step RAG pipeline to generate high
     License & Contact
     - This repository does not include a license file. Add `LICENSE` if you want to open-source it (MIT recommended).
     - Project owner: `ranit57` — ranitpal57@gmail.com
-
-    If you'd like I can also tidy notebooks, add a `requirements.txt` if missing, or add a small `FastAPI` runner for demoing locally.
