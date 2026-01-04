@@ -116,5 +116,4 @@ The system operates on a sophisticated, multi-step RAG pipeline to generate high
     - Improve prompt templates and retrieval rules in the `app/` code
 
     License & Contact
-    - This repository does not include a license file. Add `LICENSE` if you want to open-source it (MIT recommended).
     - Project owner: `ranit57` — ranitpal57@gmail.com
