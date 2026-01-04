@@ -51,31 +51,72 @@ The system operates on a sophisticated, multi-step RAG pipeline to generate high
     ```
 3.  **Install dependencies:**
     ```
+    # Agentic AI based RAG chatbot — Document Analyzer
+
+    A focused Retrieval-Augmented Generation (RAG) system to ingest, index, and analyze insurance policy documents and provide accurate, evidence-backed answers.
+
+    Key goals:
+    - Quickly ingest policies (PDF/Markdown) and create a searchable vector index
+    - Use adaptive retrieval + refinement to surface the most relevant document excerpts
+    - Validate responses against sources to reduce hallucination
+
+    Highlights
+    - Scalable document ingestion and chunking
+    - Adaptive & corrective retrieval pipeline
+    - Optional web search augmentation for up-to-date context
+    - Hallucination check that cross-verifies answers against retrieved sources
+
+    Quickstart
+    1. Clone this repository and open the project root:
+
+    ```powershell
+    git clone https://github.com/ranit57/Agentic-AI-based-RAG-chatbot-Document-Analyzer.git
+    cd "Agent-Based-RAG-Chatbot-for-Insurance-Policy-Analysis"
+    ```
+
+    2. Create and activate a virtual environment:
+
+    ```powershell
+    python -m venv venv
+    venv\Scripts\activate
     pip install -r requirements.txt
     ```
-4.  **Set up environment variables:**
-    Create a `.env` file in the root directory and add your API keys.
+
+    3. Add required secrets to a `.env` file (examples):
+
     ```
-    LLAMA_CLOUD_API_KEY="..."
-    AZURE_OPENAI_API_KEY="..."
-    AZURE_OPENAI_ENDPOINT="..."
-    TAVILY_API_KEY="..."
-    openai_api_key="..."
+    AZURE_OPENAI_API_KEY=...
+    AZURE_OPENAI_ENDPOINT=...
+    OPENAI_API_KEY=...
+    TAVILY_API_KEY=...
     ```
-5.  **Process Policy Documents:**
-    Run the data ingestion notebook to convert PDFs into structured chunks and populate the ChromaDB vector store.
-6.  **Run the Chatbot:**
-    Execute the main notebook or a FastAPI application to interact with the RAG chatbot.
 
------
+    4. Process policy PDFs to generate markdown and vectors (use `pdf_preprocessing.ipynb`):
 
-### Usage
+    - Open `pdf_preprocessing.ipynb` and run the cells to convert PDFs in `data/input_data/pdf/` to markdown and to build the vector store.
 
-To get an answer for a query, simply call the `generate_response` function:
+    5. Run the interactive chatbot or API (project includes notebooks and a FastAPI scaffold).
 
-```python
-query = "Does HDFC ERGO Optima Secure cover AYUSH treatment?"
-generate_response(query)
-```
+    Usage example (Python)
 
-The output will be saved to a Markdown file in the `./data/generated_output/` directory if the response is verified as factual.
+    ```python
+    from app.chat import generate_response
+
+    resp = generate_response("Does HDFC ERGO Optima Secure cover AYUSH treatment?")
+    print(resp)
+    ```
+
+    Where to look
+    - Data input: `data/input_data/pdf/` and `data/input_data/markdown/`
+    - Processing: `pdf_preprocessing.ipynb`
+    - Main demos: `main.ipynb`
+
+    Contributing
+    - Update or add processing notebooks for new document types
+    - Improve prompt templates and retrieval rules in the `app/` code
+
+    License & Contact
+    - This repository does not include a license file. Add `LICENSE` if you want to open-source it (MIT recommended).
+    - Project owner: `ranit57` — ranitpal57@gmail.com
+
+    If you'd like I can also tidy notebooks, add a `requirements.txt` if missing, or add a small `FastAPI` runner for demoing locally.
